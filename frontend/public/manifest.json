@@ -1,0 +1,17 @@
+{
+  "short_name": "RESQMesh",
+  "name": "RESQMesh | Decentralized Emergency Network",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#060b13",
+  "theme_color": "#060b13",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "description": "Decentralized emergency response and triage mesh network for CASCADE '26."
+}

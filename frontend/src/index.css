@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #FFFFFF;
+  color: #102B4E;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+.mono-telemetry {
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+/* Custom Tactical Scrollbars (Clean Light Blue) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #EAF5FF;
+}
+::-webkit-scrollbar-thumb {
+  background: #B6D9FB;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #168BFA;
+}
+
+/* Glowing Border Utilities */
+.border-glow-cyan {
+  border-color: #00f0ff;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
+}
+
+.border-glow-amber {
+  border-color: #f59e0b;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.25);
+}
+
+.border-glow-red {
+  border-color: #ef4444;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.35);
+}
+
+/* Radar pulse animation */
+@keyframes radar-pulse-cyan {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.7);
+  }
+  70% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 12px rgba(0, 240, 255, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 240, 255, 0);
+  }
+}
+
+.pulse-cyan {
+  animation: radar-pulse-cyan 2s infinite;
+}
+
+@keyframes radar-pulse-red {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.8);
+  }
+  70% {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 14px rgba(239, 68, 68, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+.pulse-red {
+  animation: radar-pulse-red 1.8s infinite;
+}
+
+/* Dark Command Center Leaflet Filter */
+.leaflet-container {
+  font-family: var(--font-sans) !important;
+  background-color: #070d18 !important;
+}
+
+.dark-tiles .leaflet-tile {
+  filter: brightness(0.65) invert(1) contrast(3.2) hue-rotate(190deg) saturate(0.4) brightness(0.7);
+}
+
+/* Custom map marker styles */
+.custom-victim-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+}
+
+.user-gps-tooltip {
+  background-color: #060b13 !important;
+  color: #00f0ff !important;
+  border: 1px solid #00f0ff !important;
+  font-family: var(--font-mono) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  padding: 3px 8px !important;
+  border-radius: 4px !important;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.4) !important;
+}
+
+.user-gps-tooltip::before {
+  border-top-color: #00f0ff !important;
+}
+
+/* OpenStreetMap attribution styling */
+.leaflet-control-attribution {
+  background: rgba(6, 11, 19, 0.85) !important;
+  color: #94a3b8 !important;
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+  padding: 2px 6px !important;
+  border-top-left-radius: 4px !important;
+}
+
+.leaflet-control-attribution a {
+  color: #00f0ff !important;
+  text-decoration: none !important;
+}
+
+.leaflet-control-attribution a:hover {
+  text-decoration: underline !important;
+}

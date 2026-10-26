@@ -1,0 +1,11 @@
+{
+  "w_identity": 1.25,
+  "w_location": 1.40,
+  "w_content": 0.95,
+  "w_corroboration": 1.65,
+  "w_credential": 1.50,
+  "w_attackSignals": 1.80,
+  "bias_distress": 0.15,
+  "bias_capability": -0.10,
+  "bias_hazard": 0.05
+}

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RESQMesh</string>
+    <string name="ble_service_running">RESQMesh Tactical BLE Mesh Active</string>
+    <string name="ble_service_desc">Relaying emergency SOS signals between nearby peers over Bluetooth Low Energy.</string>
+</resources>
