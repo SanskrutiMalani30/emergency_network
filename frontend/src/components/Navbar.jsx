@@ -11,7 +11,8 @@ import {
   WifiOff,
   User,
   AlertTriangle,
-  Mic
+  Mic,
+  ArrowLeft
 } from 'lucide-react';
 
 export default function Navbar({
@@ -27,7 +28,8 @@ export default function Navbar({
   onLogout,
   onDiscreetTap,
   isVoiceActive = false,
-  gestureTestFeedback = null
+  gestureTestFeedback = null,
+  onBackToSafePath = null
 }) {
   const isPartitioned = metrics?.is_partitioned;
   const dbConnected = health?.database?.connected;
@@ -40,7 +42,7 @@ export default function Navbar({
     .substring(0, 2)
     .toUpperCase() || 'AY';
 
-  // The user explicitly requires EXACTLY TWO primary navigation tabs:
+  // Exactly two primary navigation tabs for Command Center:
   const tabs = [
     { id: 'operations', label: 'Operations & Map', icon: MapPin },
     { id: 'responders', label: 'Responders & Match', icon: Users },
@@ -53,30 +55,45 @@ export default function Navbar({
         {/* Main Header Bar */}
         <div className="flex items-center justify-between h-16">
           
-          {/* Brand & Team Logo with Click / Tap SOS Trigger */}
-          <button
-            type="button"
-            onClick={onDiscreetTap}
-            className="flex items-center space-x-3 cursor-pointer select-none active:scale-95 transition group text-left focus:outline-none"
-            title="Click RESQMesh Logo to Trigger Emergency SOS & Send Alert to Contact"
-          >
-            <div className="w-10 h-10 rounded-xl bg-[#EAF5FF] border border-[#B6D9FB] flex items-center justify-center text-[#168BFA] shadow-xs group-hover:border-[#168BFA] group-hover:bg-[#DDF0FF] transition">
-              <Shield className="w-5 h-5 text-[#168BFA] group-hover:scale-110 transition-transform" />
-            </div>
-            <div>
-              <div className="flex items-center space-x-2">
-                <span className="font-heading font-black text-lg tracking-tight text-[#102B4E]">
-                  RESQ<span className="text-[#168BFA]">Mesh</span>
-                </span>
-                <span className="bg-[#EAF5FF] text-[#168BFA] border border-[#B6D9FB] text-[10px] font-mono px-2 py-0.5 rounded-full font-bold">
-                  CASCADE '26
-                </span>
+          <div className="flex items-center space-x-3">
+            {/* Return to SafePath 1-Second View */}
+            {onBackToSafePath && (
+              <button
+                type="button"
+                onClick={onBackToSafePath}
+                className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-[#1B6B57] text-white hover:bg-[#165646] active:bg-[#12483A] text-xs font-bold transition shadow-xs"
+                title="Return to SafePath Home"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                <span>SafePath</span>
+              </button>
+            )}
+
+            {/* Brand & Team Logo with Click / Tap SOS Trigger */}
+            <button
+              type="button"
+              onClick={onDiscreetTap}
+              className="flex items-center space-x-3 cursor-pointer select-none active:scale-95 transition group text-left focus:outline-none"
+              title="Click SafePath / RESQMesh Logo to Trigger Emergency SOS"
+            >
+              <div className="w-10 h-10 rounded-xl bg-[#EAF5FF] border border-[#B6D9FB] flex items-center justify-center text-[#168BFA] shadow-xs group-hover:border-[#168BFA] group-hover:bg-[#DDF0FF] transition">
+                <Shield className="w-5 h-5 text-[#168BFA] group-hover:scale-110 transition-transform" />
               </div>
-              <p className="text-[11px] text-[#627D98] font-sans hidden sm:block">
-                Human-Powered Emergency Response Network
-              </p>
-            </div>
-          </button>
+              <div>
+                <div className="flex items-center space-x-2">
+                  <span className="font-heading font-black text-lg tracking-tight text-[#102B4E]">
+                    Safe<span className="text-[#1B6B57]">Path</span>
+                  </span>
+                  <span className="bg-[#EAF5FF] text-[#168BFA] border border-[#B6D9FB] text-[10px] font-mono px-2 py-0.5 rounded-full font-bold">
+                    MESH '26
+                  </span>
+                </div>
+                <p className="text-[11px] text-[#627D98] font-sans hidden sm:block">
+                  Human-Powered Emergency Response Network
+                </p>
+              </div>
+            </button>
+          </div>
 
           {/* Center Navigation Tabs (Exactly 2 Tabs) */}
           <nav className="flex items-center space-x-1.5 bg-[#EAF5FF] p-1 rounded-xl border border-[#D0E6FC]">
